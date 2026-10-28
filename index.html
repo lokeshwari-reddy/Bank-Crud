@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🏦 Banking Management System</h1>
+        <p>Manage customer accounts with CRUD operations</p>
+    </header>
+
+    <main class="container">
+        <section class="summary">
+            <div class="card">
+                <h3>Total Accounts</h3>
+                <p id="totalAccounts">0</p>
+            </div>
+            <div class="card">
+                <h3>Total Balance</h3>
+                <p id="totalBalance">₹0.00</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2 id="formTitle">Create Bank Account</h2>
+
+            <form id="accountForm">
+                <input type="hidden" id="editId">
+
+                <div class="form-grid">
+                    <div>
+                        <label for="name">Customer Name</label>
+                        <input type="text" id="name"
+                               placeholder="Enter customer name"
+                               required maxlength="80">
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email"
+                               placeholder="Enter email" required>
+                    </div>
+
+                    <div>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone"
+                               placeholder="10-digit phone number"
+                               pattern="[0-9]{10}" required>
+                    </div>
+
+                    <div>
+                        <label for="accountType">Account Type</label>
+                        <select id="accountType" required>
+                            <option value="Savings">Savings</option>
+                            <option value="Current">Current</option>
+                        </select>
+                    </div>
+
+                    <div id="balanceField">
+                        <label for="balance">Initial Deposit (₹)</label>
+                        <input type="number" id="balance"
+                               min="0" step="0.01"
+                               value="0" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn">
+                        Create Account
+                    </button>
+                    <button type="button" id="cancelBtn"
+                            class="secondary" hidden>
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="table-heading">
+                <h2>Bank Accounts</h2>
+                <input type="search" id="search"
+                       placeholder="Search name or account number...">
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account No.</th>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Type</th>
+                            <th>Balance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accountList"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyMessage" class="empty">
+                No accounts found. Create your first account.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Banking Management System | HTML, CSS & JavaScript</p>
+        <p>Educational demo only — not for real banking transactions.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
